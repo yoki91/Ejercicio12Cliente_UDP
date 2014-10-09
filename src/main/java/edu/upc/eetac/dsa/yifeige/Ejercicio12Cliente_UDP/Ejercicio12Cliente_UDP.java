@@ -19,13 +19,13 @@ public class Ejercicio12Cliente_UDP
  	        byte[] receivebuff=new byte[256];
  	        sendbuff=opcion1.getBytes();//codifico a mi opcion para poner meter dentro del buff
  	        InetAddress address=InetAddress.getByName(Hostname);	        
- 	        DatagramPacket paquete=new DatagramPacket(sendbuff,sendbuff.length,address,portNumber);
- 	        socket.send(paquete);//envio mi buff
+ 	        DatagramPacket enviar_paquete=new DatagramPacket(sendbuff,sendbuff.length,address,portNumber);
+ 	        socket.send(enviar_paquete);//envio mi buff
  	        
- 	        paquete=new DatagramPacket(receivebuff,receivebuff.length);
+ 	        DatagramPacket recibir_paquete=new DatagramPacket(receivebuff,receivebuff.length);
  	        socket.receive(paquete);
  	        
- 	        String resultado=new String(paquete.getData(),0,paquete.getLength());
+ 	        String resultado=new String(recibir_paquete.getData());
  	        System.out.printf("La hora actual es %s", resultado);
  	        System.out.print("Gracias por usar el servicio\n");
  	        System.exit(1);
